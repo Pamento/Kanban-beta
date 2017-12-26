@@ -19,7 +19,7 @@ $(function(){
 
   // KANBAN
   var board = {
-    name: 'Tablica Kanban',
+    name: 'Kanban board',
     createColumn: function(column) {
       this.element.append(column.element);
       initSortable();
@@ -29,7 +29,7 @@ $(function(){
 
   $('.create-column')
   .click(function(){
-    board.createColumn(new Column(prompt('Wpisz nazwę kolumny')));
+    board.createColumn(new Column(prompt('Whrite the name of column')));
   });
 
   // KLASA KANBAN COLUMN
@@ -46,7 +46,7 @@ $(function(){
       var columnTitle = $('<h2 class="column-title">' + self.name + '</h2>');
       var columnCardList = $('<ul class="card-list"></ul>');
       var columnDelete = $('<button class="btn-delete">x</button>');
-      var columnAddCard = $('<button class="column-add-card">Dodaj kartę</button>');
+      var columnAddCard = $('<button class="column-add-card">Add a card</button>');
 
       // PODPINANIE ODPOWIEDNICH ZDARZEŃ POD WĘZŁY
       columnDelete.click(function() {
@@ -54,7 +54,7 @@ $(function(){
       });
       columnAddCard.click(function(event) {
         event.preventDefault();
-        self.createCard(new Card(prompt("Wpisz nazwę karty")));
+        self.createCard(new Card(prompt("Write on the card")));
       });
 
       // KONSTRUOWANIE ELEMENTU KOLUMNY
@@ -102,9 +102,9 @@ $(function(){
   };
 
   // TWORZENIE NOWYCH EGZEMPLARZY KOLUMN
-  var todoColumn = new Column('Do zrobienia');
-  var doingColumn = new Column('W trakcie');
-  var doneColumn = new Column('Skończone');
+  var todoColumn = new Column('To do');
+  var doingColumn = new Column('Doing');
+  var doneColumn = new Column('Done');
 
   // DODAWANIE KOLUMN DO TABLICY
   board.createColumn(todoColumn);
@@ -112,8 +112,8 @@ $(function(){
   board.createColumn(doneColumn);
 
   // TWORZENIE NOWYCH EGZEMPLARZY KART
-  var card1 = new Card('Nowe zadanie');
-  var card2 = new Card('stworzyc tablice kanban');
+  var card1 = new Card('New task');
+  var card2 = new Card('ex: find good dev');
 
   // DODAWANIE KART DO KOLUMN
   todoColumn.createCard(card1);
