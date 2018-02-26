@@ -1,6 +1,6 @@
 $(function(){
 
-  // FUNKCJE POMOCNICZE
+  // SUPPORTING FUNCTIONS
   function initSortable() {
     $('.card-list').sortable({
       connectWith: '.card-list',
@@ -32,7 +32,7 @@ $(function(){
     board.createColumn(new Column(prompt('Whrite the name of column')));
   });
 
-  // KLASA KANBAN COLUMN
+  // CLASS KANBAN COLUMN
   function Column(name) {
     var self = this;
 
@@ -41,14 +41,14 @@ $(function(){
     this.element = createColumn();
 
     function createColumn() {
-      // TWORZENIE NOWYCH WĘZŁÓW
+      // CREATION OF NEW NOEUDS
       var column = $('<div class="column"></div>');
       var columnTitle = $('<h2 class="column-title">' + self.name + '</h2>');
       var columnCardList = $('<ul class="card-list"></ul>');
       var columnDelete = $('<button class="btn-delete">x</button>');
       var columnAddCard = $('<button class="column-add-card">Add a card</button>');
 
-      // PODPINANIE ODPOWIEDNICH ZDARZEŃ POD WĘZŁY
+      // JOIN THE EVENTS TO NOEUDS
       columnDelete.click(function() {
         self.deleteColumn();
       });
@@ -57,7 +57,7 @@ $(function(){
         self.createCard(new Card(prompt("Write on the card")));
       });
 
-      // KONSTRUOWANIE ELEMENTU KOLUMNY
+      // CREATE COLUMN ELEMENT
       column.append(columnTitle)
       .append(columnDelete)
       .append(columnAddCard)
@@ -74,7 +74,7 @@ $(function(){
     }
   };
 
-  // KLASA KANBAN CARD
+  // CLASS KANBAN CARD
   function Card(description) {
     var self = this;
 
@@ -101,21 +101,21 @@ $(function(){
     }
   };
 
-  // TWORZENIE NOWYCH EGZEMPLARZY KOLUMN
+  // CREATION OF BASIC COLULMN
   var todoColumn = new Column('To do');
   var doingColumn = new Column('Doing');
   var doneColumn = new Column('Done');
 
-  // DODAWANIE KOLUMN DO TABLICY
+  // ADD COLUMN TO THE VIEW
   board.createColumn(todoColumn);
   board.createColumn(doingColumn);
   board.createColumn(doneColumn);
 
-  // TWORZENIE NOWYCH EGZEMPLARZY KART
+  // NEW CARDS
   var card1 = new Card('New task');
   var card2 = new Card('ex: find good dev');
 
-  // DODAWANIE KART DO KOLUMN
+  // ADD CARD TO COLUMN
   todoColumn.createCard(card1);
   doingColumn.createCard(card2);
 });
