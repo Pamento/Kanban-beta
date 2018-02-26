@@ -1,1 +1,1 @@
-Kanban, like example of object oriented programming (OOP).
+Kanban, like example of object oriented programming (POO).
